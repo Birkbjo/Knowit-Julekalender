@@ -11,14 +11,15 @@ const directions = (coords = []) => ({
 });
 
 function walk(path) {
-    const step = directions([0,0]);
+    let coords = [0,0]
+    const step = directions(coords);
     for (let i = 0; i < path.length; i += 2) {
         const len = parseInt(path.substring(i, i + 1));
         const dir = path.substring(i + 1, i + 2);
-        arr = step[dir](len);
+        coords = step[dir](len);
        
     }
-    return arr;
+    return coords;
 }
 
 assert(JSON.stringify(walk('2H2F2H3B')) === JSON.stringify([4, -1]));
